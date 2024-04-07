@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp_chat/featuer/welcome/pages/welcom_page.dart';
+import 'package:whatsapp_chat/common/theme/dark_theme.dart';
+import 'package:whatsapp_chat/common/theme/light_theme.dart';
+
+import 'feature/welcome/pages/welcome_page.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +18,9 @@ class MyApp extends StatelessWidget {
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'WhatsApp Chat',
-      theme: ThemeData.dark(),
+      theme: lightTheme(),
+      darkTheme: darkTheme(),
+      themeMode: ThemeMode.system,
       home: const WelcomePage()
     );
   }
