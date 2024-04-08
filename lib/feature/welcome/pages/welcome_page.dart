@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_chat/common/extension/custom_theme_extension.dart';
-import 'package:whatsapp_chat/common/utils/my_colors.dart';
 import 'package:whatsapp_chat/feature/welcome/widgets/language_button.dart';
 
 import '../../../common/widgets/custom_elevated_button.dart';
@@ -35,7 +34,7 @@ class WelcomePage extends StatelessWidget {
               ),
               CustomElevatedButton(title: "AGREE AND CONTINUE", onPressed: () {},),
               const SizedBox(height: 50),
-              LanguageButton(language: "English", onTap: () {})
+              const LanguageButton(language: "English")
             ],
           )),
         ],

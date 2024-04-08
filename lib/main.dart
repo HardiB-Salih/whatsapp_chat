@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_chat/common/theme/dark_theme.dart';
 import 'package:whatsapp_chat/common/theme/light_theme.dart';
+import 'package:whatsapp_chat/feature/auth/pages/login_page.dart';
 
 import 'feature/welcome/pages/welcome_page.dart';
 
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: lightTheme(),
       darkTheme: darkTheme(),
       themeMode: ThemeMode.system,
-      home: const WelcomePage()
+      home: const LoginPage()
     );
   }
 }
