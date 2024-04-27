@@ -1,21 +1,33 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:whatsapp_chat/common/extension/custom_theme_extension.dart';
 
 import '../../../common/widgets/custom_icon_button.dart';
+import '../controller/auth_controller.dart';
 import '../widgets/custom_text_field.dart';
 
-class VerificationPage extends StatefulWidget {
-  const VerificationPage({super.key});
+class VerificationPage extends ConsumerWidget {
+  const VerificationPage({super.key, required this.smsCodeId, required this.phoneNumber});
+
+  final String smsCodeId;
+  final String phoneNumber;
+
+  void verifySmsCode(
+      BuildContext context,
+      WidgetRef ref,
+      String smsCode,
+      ) {
+    ref.read(authControllerProvider).verifySmsCode(
+      context: context,
+      smsCodeId: smsCodeId,
+      smsCode: smsCode,
+      mounted: true,
+    );
+  }
 
   @override
-  State<VerificationPage> createState() => _VerificationPageState();
-}
-
-class _VerificationPageState extends State<VerificationPage> {
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -68,7 +80,11 @@ class _VerificationPageState extends State<VerificationPage> {
                 fontSize: 30,
                 autoFocus: true,
                 keyboardType: TextInputType.number,
-                onChanged: (value) {  },
+                onChanged: (value) {
+                  if (value.length == 6) {
+                    return verifySmsCode(context, ref, value);
+                  }
+                },
               ),
             ),
 

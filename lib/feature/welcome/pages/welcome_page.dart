@@ -2,11 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:whatsapp_chat/common/extension/custom_theme_extension.dart';
 import 'package:whatsapp_chat/feature/welcome/widgets/language_button.dart';
 
+import '../../../common/routes/routes.dart';
 import '../../../common/widgets/custom_elevated_button.dart';
 import '../widgets/privacy_and_terms.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
+
+  navigateToLoginPage(context) {
+    Navigator.pushNamedAndRemoveUntil(
+      context,
+      Routes.login,
+          (route) => false,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +41,9 @@ class WelcomePage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
                 child: PrivacyWidget(onPrivacyPolicyTap: () {},),
               ),
-              CustomElevatedButton(title: "AGREE AND CONTINUE", onPressed: () {},),
+              CustomElevatedButton(title: "AGREE AND CONTINUE",
+                onPressed: () => navigateToLoginPage(context),
+              ),
               const SizedBox(height: 50),
               const LanguageButton(language: "English")
             ],

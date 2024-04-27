@@ -1,20 +1,22 @@
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:whatsapp_chat/common/extension/custom_theme_extension.dart';
 import 'package:whatsapp_chat/common/utils/my_colors.dart';
 import 'package:whatsapp_chat/feature/auth/widgets/custom_text_field.dart';
 
 import '../../../common/helper/show_alert_dialog.dart';
 import '../../../common/widgets/custom_elevated_button.dart';
+import '../controller/auth_controller.dart';
 
-class LoginPage extends StatefulWidget {
+class LoginPage extends ConsumerStatefulWidget {
   const LoginPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  ConsumerState<LoginPage> createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginPageState extends ConsumerState<LoginPage> {
   late TextEditingController countryNameController;
   late TextEditingController countryCodeController;
   late TextEditingController phoneNumberController;
@@ -44,10 +46,10 @@ class _LoginPageState extends State<LoginPage> {
       );
     }
 
-    // ref.read(authControllerProvider).sendSmsCode(
-    //   context: context,
-    //   phoneNumber: "+$countryCode$phoneNumber",
-    // );
+    ref.read(authControllerProvider).sendSmsCode(
+      context: context,
+      phoneNumber: "+$countryCode$phoneNumber",
+    );
   }
 
   showCountryPickerBottomSheet() {
