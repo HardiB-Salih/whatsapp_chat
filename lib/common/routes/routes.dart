@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:whatsapp_chat/feature/chat/pages/profile_page.dart';
 
 import '../../feature/auth/pages/login_page.dart';
 import '../../feature/auth/pages/user_info_page.dart';
@@ -57,6 +58,11 @@ class Routes {
         final UserModel user = settings.arguments as UserModel;
         return MaterialPageRoute(
           builder: (context) => ChatPage(user: user),
+        );
+      case profile:
+        final UserModel user = settings.arguments as UserModel;
+        return MaterialPageRoute(
+          builder: (context) => ProfilePage(user: user),
         );
       // case profile:
       //   final UserModel user = settings.arguments as UserModel;
